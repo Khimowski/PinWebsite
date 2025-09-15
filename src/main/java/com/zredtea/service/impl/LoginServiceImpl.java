@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 public class LoginServiceImpl implements LoginService {
     @Override
     public String Authenticate(String username, String password) {
+        String salt = null;
+        password = PWDUtil.PasswordGetSHA256(password,salt);
 
     }
 }
