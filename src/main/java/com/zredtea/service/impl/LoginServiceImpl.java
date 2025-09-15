@@ -10,6 +10,9 @@ public class LoginServiceImpl implements LoginService {
     public String Authenticate(String username, String password) {
         String salt = null;
         password = PWDUtil.PasswordGetSHA256(password,salt);
-
+        if(password.equals(username)) {
+            return "ok";
+        }
+        return "fail";
     }
 }
