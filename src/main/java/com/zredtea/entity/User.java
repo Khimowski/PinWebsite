@@ -1,29 +1,30 @@
 package com.zredtea.entity;
 
+import java.util.UUID;
+
 public class User {
-    private Long id;
+    private Long userid;
     private String username;
     private String nickname;
     private String password;
     private String salt;
 
     public User() {
+        this.salt = UUID.randomUUID().toString();
     }
 
-    public User(Long id, String username, String nickname,String password, String salt) {
-        this.id = id;
+    public User(Long userid, String username, String nickname,String password) {
+        this.userid = userid;
         this.username = username;
         this.nickname = nickname;
         this.password = password;
-        this.salt = salt;
+        this.salt = UUID.randomUUID().toString();
     }
 
-    public Long getId() {
-        return id;
+    public Long getUserid() {
+        return userid;
     }
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public void setUserid(Long userid) {this.userid = userid;}
 
     public String getUsername() {
         return username;
@@ -55,7 +56,7 @@ public class User {
 
     @Override
     public String toString() {
-        return ( "id=" + id + "\n" +
+        return ( "userid=" + userid + "\n" +
                             "username=" + username + "\n" +
                             "nickname=" + nickname + "\n" +
                             "password=" + password + "\n" +
