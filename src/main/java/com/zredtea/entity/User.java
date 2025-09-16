@@ -55,11 +55,11 @@ public class User {
 
     @Override
     public String toString() {
-        System.out.println( "id=" + id + "\n" +
+        return ( "id=" + id + "\n" +
                             "username=" + username + "\n" +
                             "nickname=" + nickname + "\n" +
                             "password=" + password + "\n" +
-                            "salt=" + salt
+                            "salt=" + salt + "\n"
         );
     }
 
