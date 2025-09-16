@@ -1,18 +1,25 @@
 package com.zredtea.utils;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import java.io.Reader;
 
 public class DBUtil {
-    private static final String URL = "jdbc:mysql://127.0.0.1:3306/test_db";
-    private static final String USER = "root";
-    private static final String PASS = "root7645";
+    private static SqlSessionFactory sqlSessionFactory = null;
 
-    public static Connection getConnection() {
+    static {
         try {
-            return DriverManager.getConnection(URL, USER, PASS);
+            Reader reader = Resources.getResourceAsReader("mybatis-config.xml");
+            sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static SqlSession getSqlSession() {
+        return sqlSessionFactory.openSession();
     }
 }

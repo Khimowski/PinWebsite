@@ -1,8 +1,11 @@
 package com.zredtea.entity;
 
+import com.zredtea.utils.PWDUtil;
+
 import java.util.UUID;
 
 public class User {
+    private Long id;
     private Long userid;
     private String username;
     private String nickname;
@@ -13,13 +16,24 @@ public class User {
         this.salt = UUID.randomUUID().toString();
     }
 
+    public User(Long userid, String username,String password) {
+        this.userid = userid;
+        this.username = username;
+        this.nickname = null;
+        this.salt = UUID.randomUUID().toString();
+        this.password = PWDUtil.PasswordGetSHA256(password,this.salt);
+    }
+
     public User(Long userid, String username, String nickname,String password) {
         this.userid = userid;
         this.username = username;
         this.nickname = nickname;
-        this.password = password;
         this.salt = UUID.randomUUID().toString();
+        this.password = PWDUtil.PasswordGetSHA256(password,this.salt);
     }
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
     public Long getUserid() {
         return userid;

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zredtea.dao.UserDao">
+    <insert id="newUser" parameterType="com.zredtea.entity.User">
+        INSERT INTO user(userid,username,password,salt)
+        VALUE(#{userid},#{username},#{password},#{salt})
+    </insert>
+    <update id="updateUser" parameterType="com.zredtea.entity.User">
+        UPDATE user
+        <set>
+            <if test="username != null">username = #{username}</if>
+            <if test="nickname != null">nickname = #{nickname}</if>
+            <if test="password != null">password = #{password}</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+    <delete id="deleteUserByUserid" parameterType="com.zredtea.entity.User">
+        DELETE from user WHERE user.userid = #{userid}
+    </delete>
+    <select id="searchUserByUserid" parameterType="Long" resultType="com.zredtea.entity.User">
+        SELECT * from user WHERE user.userid= #{userid}
+    </select>
+    <select id="searchUserByUsername" parameterType="String" resultType="com.zredtea.entity.User">
+        SELECT * from user WHERE user.username = #{username}
+    </select>
+</mapper>
