@@ -4,6 +4,7 @@
     <title>第一个springmvc</title>
 </head>
 <body>
-    <a href="some.do">发起一个some.do的请求</a>
+    <a href="login">login</a>
+    <a href="register">register</a>
 </body>
 </html>

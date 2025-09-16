@@ -11,10 +11,15 @@ public class UserDaoTest {
     public void test() {
         SqlSession sqlSession = DBUtil.getSqlSession();
         UserDao userDao = sqlSession.getMapper(UserDao.class);
-        User user = userDao.searchUserByUserid(2655548416L);
-        System.out.println(user);
 
-        User user2 = new User(114514L,"ysxb","yeshou","1919810");
+        User userGet = userDao.searchUserByUserid(4000L);
+        System.out.println(userGet);
+
+        User userTest = new User(4000L,"yredtea","Sakura");
+        System.out.println(userTest);
+        userDao.newUser(userTest);
+
+        User user2 = userDao.searchUserByUserid(4000L);
         System.out.println(user2);
     }
 }

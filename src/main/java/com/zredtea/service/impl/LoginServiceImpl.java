@@ -16,6 +16,31 @@ public class LoginServiceImpl implements LoginService {
     private UserDao userDao;
 
     @Override
+    public void newUser(User user) {
+        userDao.newUser(user);
+    }
+
+    @Override
+    public void updateUser(User user) {
+        userDao.updateUser(user);
+    }
+
+    @Override
+    public void deleteUserByUserid(Long userid) {
+        userDao.deleteUserByUserid(userid);
+    }
+
+    @Override
+    public User getUserByUsername(String username) {
+        return userDao.searchUserByUsername(username);
+    }
+
+    @Override
+    public User getUserByUserid(Long userid) {
+        return userDao.searchUserByUserid(userid);
+    }
+
+    @Override
     public int Authenticate(String username, String password) {
         User user = userDao.searchUserByUsername(username);
         if (user != null) {

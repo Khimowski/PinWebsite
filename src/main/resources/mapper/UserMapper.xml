@@ -4,7 +4,7 @@
 <mapper namespace="com.zredtea.dao.UserDao">
     <insert id="newUser" parameterType="com.zredtea.entity.User">
         INSERT INTO user(userid,username,password,salt)
-        VALUE(#{userid},#{username},#{password},#{salt})
+        VALUES(#{userid},#{username},#{password},#{salt})
     </insert>
     <update id="updateUser" parameterType="com.zredtea.entity.User">
         UPDATE user
