@@ -1,7 +1,9 @@
 package com.zredtea.service;
 
 import com.zredtea.entity.User;
+import org.springframework.stereotype.Service;
 
+@Service
 public interface LoginService {
     public void newUser(User user);
     public void updateUser(User user);
